@@ -1,11 +1,7 @@
-// Adjust these params to your needs
-const SVG_FOLDER_LOCATION = "/svg"
-
-// Usage: file:yourSvgName (no file extensions)
-const NAMESPACE = "file"
+const DOMAIN = "svg"
 
 async function loadFile(path) {
-    const response = await fetch(`/local${SVG_FOLDER_LOCATION}/${path}.svg`)
+    const response = await fetch(`/local/${path}.svg`)
     if (response.ok) {
         const responseText = await response.text()
         const svgString = responseText.replace(/\r\n/g, "").replace(/\t/g,"")
@@ -30,4 +26,4 @@ async function getIcon(name) {
 }
 
 window.customIconsets = window.customIconsets || {};
-window.customIconsets[NAMESPACE] = getIcon;
+window.customIconsets[DOMAIN] = getIcon;
